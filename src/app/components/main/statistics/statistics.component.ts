@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
 
@@ -12,7 +13,8 @@ export class StatisticsComponent implements OnInit {
   dataSource: any[];
   dataSourceyyyy: any[];
 
-  constructor(private _customerService: CustomerService) { }
+  constructor(private _customerService: CustomerService,
+    private readonly _router: Router) { }
 
   ngOnInit(): void {
     this.searchInfoByMM();
@@ -54,6 +56,10 @@ export class StatisticsComponent implements OnInit {
     const date = new Date();
     date.setMonth(val - 1);
     return date.toLocaleString('en-PE', { month: 'long' });
+  }
+
+  getBack(){
+    this._router.navigate(['/customers'])
   }
 
 }

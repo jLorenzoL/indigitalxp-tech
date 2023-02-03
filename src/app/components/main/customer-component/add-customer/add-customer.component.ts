@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -22,11 +22,11 @@ export class AddCustomerComponent implements OnInit {
 
     ngOnInit(): void {
         this.form = this.fb.group({
-            name: [this.name, []],
-            apellido: [this.apellido, []],
-            email: [this.email, []],
-            document: [this.document, []],
-            born: [this.born, []]
+            name: [this.name, [Validators.required]],
+            apellido: [this.apellido, [Validators.required]],
+            email: [this.email, [Validators.email]],
+            document: [this.document, [Validators.required, Validators.minLength(8), Validators.maxLength(9)]],
+            born: [this.born, [Validators.required]]
         });
     }
 

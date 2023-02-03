@@ -7,6 +7,7 @@ import { Customer } from 'src/app/models/customer';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { SnackBarConfigurationSharedComponent } from '../../shared/snackbar/snack-bar-configuration-shared/snack-bar-configuration-shared.component';
 
 @Component({
   selector: 'app-customer-component',
@@ -27,6 +28,7 @@ export class CustomerComponentComponent implements OnInit {
   ];
   constructor(
     private _customerService: CustomerService,
+    private _snackBarClassShared: SnackBarConfigurationSharedComponent,
     private readonly _router: Router,
     private dialog: MatDialog
   ) { }
@@ -76,14 +78,19 @@ export class CustomerComponentComponent implements OnInit {
     const dialogRef = this.dialog.open(AddCustomerComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(
       data => {
-        this.saveCustomer(data)
+        if(data.document){
+          this.saveCustomer(data)
+        }
+        
       });    
 
   }
 
-  saveCustomer(data: any){
+  viewGrafics(){
+    this._router.navigate(['/statistics']);
+  }
 
-    console.log(data)
+  saveCustomer(data: any){
 
     const requestBody = {
       "name" : data.name,
@@ -100,6 +107,8 @@ export class CustomerComponentComponent implements OnInit {
         if(res.state == true) {
           this.dataSource = new MatTableDataSource<any[]>([]);
           this.searchCustomerData("","");
+        }else {
+          this._snackBarClassShared.openSnackBar(res.message, 5000, 'OK')
         }
       },
       error: (e) => console.error(e)
@@ -108,10 +117,12 @@ export class CustomerComponentComponent implements OnInit {
 
   }
 
-
-
   resetForm(){
-    console.log('LIMPIAR CAMPOS')
+    this.dataSource = new MatTableDataSource<any[]>([]);
+    this.setStep(0)
+    const valueFiltro = this.filterSearchForm.controls;
+    valueFiltro["document"].setValue('');
+    valueFiltro["email"].setValue('');
   }
 
 }

@@ -12,13 +12,17 @@ import { CustomerService } from './services/customer.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AddCustomerComponent } from './components/main/customer-component/add-customer/add-customer.component';
 import { StatisticsModule } from './components/main/statistics/statistics.module';
+import { SnackBarMensajeComponent } from './components/shared/snackbar/snack-bar-mensaje.component';
+import { SnackBarConfigurationSharedComponent } from './components/shared/snackbar/snack-bar-configuration-shared/snack-bar-configuration-shared.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CustomerComponentComponent,
-    AddCustomerComponent
+    AddCustomerComponent,
+    SnackBarMensajeComponent,
+    SnackBarConfigurationSharedComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,10 @@ import { StatisticsModule } from './components/main/statistics/statistics.module
     HttpClientModule,
     StatisticsModule
   ],
-  providers: [CustomerService],
+  entryComponents: [
+    SnackBarMensajeComponent
+  ],
+  providers: [CustomerService, SnackBarConfigurationSharedComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
