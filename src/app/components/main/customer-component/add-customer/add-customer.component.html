@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>Añadir cliente</h2>
+
+<mat-dialog-content [formGroup]="form">
+
+    <div class="row mx-4">
+        <div class="d-flex justify-content-between">
+            <mat-form-field>
+                <input matInput placeholder="Nombre" formControlName="name">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Apellido" formControlName="apellido">
+            </mat-form-field>
+        </div>
+
+    </div>
+
+    <div class="row mx-4">
+        <div class="d-flex justify-content-between">
+            <mat-form-field>
+                <input matInput placeholder="Correo" formControlName="email">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="DNI" formControlName="document">
+            </mat-form-field>
+        </div>
+
+    </div>
+
+    <div class="row mx-4">
+        <div class="d-flex justify-content-between">
+            <mat-form-field>
+                <input matInput formControlName="born" [matDatepicker]="picker" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <div></div>
+        </div>
+        
+
+    </div>
+
+
+</mat-dialog-content>
+
+<!-- <mat-dialog-actions> -->
+    <div class="row mx-4">
+        <div class="d-flex justify-content-between">
+            <div class="col-6"></div>
+            <div class="d-flex justify-content-between">
+                <button class="mat-raised-button"(click)="close()">Close</button>
+                <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+<!-- </mat-dialog-actions> -->
