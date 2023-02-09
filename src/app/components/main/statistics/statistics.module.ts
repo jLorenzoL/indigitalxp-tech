@@ -6,8 +6,6 @@ import { StatisticsComponent } from './statistics.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MaterialModule } from 'src/app/material.module';
 
-
-
 @NgModule({
   declarations: [StatisticsComponent],
   imports: [

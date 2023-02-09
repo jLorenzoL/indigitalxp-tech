@@ -19,7 +19,7 @@ export class CustomerService {
     }
 
     saveNewCustomer(data: any): Observable<any>{
-        return this._httpClient.post('http://localhost:8080/saveProduct', data);
+        return this._httpClient.post('http://localhost:8080/saveCustomer', data);
     }
 
     searchCustomerByMonth(): Observable<any> {

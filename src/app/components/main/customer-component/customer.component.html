@@ -1,9 +1,7 @@
 <div class="m-4">
-
     <h2 class="m-2" style="margin-bottom:0">
         <span>Búsqueda de Clientes</span>
     </h2>
-
     <div>
         <mat-accordion class="example-headers-align">
             <mat-expansion-panel [expanded]="step===0" (opened)="setStep(0)">
@@ -17,8 +15,8 @@
                         <div class="row g-3">
                             <div class="col">
                                 <mat-form-field class="medida-control-form">
-                                    <input trim matInput placeholder="Numero documento" formControlName="document" minlength="8"
-                                        autocomplete="off">
+                                    <input trim matInput placeholder="Numero documento" formControlName="document"
+                                        minlength="8" autocomplete="off">
                                 </mat-form-field>
                             </div>
                             <div class="col">
@@ -32,14 +30,17 @@
                     <mat-action-row>
                         <div class="d-flex flex-row">
                             <div>
-                                <button type=button (click)="addCustomer()" mat-raised-button color="primary">Registrar Cliente</button>
-                                <button type=button (click)="viewGrafics()" mat-raised-button color="accent">Ver Gráficas</button>
+                                <button type=button (click)="addCustomer()" mat-raised-button color="primary">Registrar
+                                    Cliente</button>
+                                <button type=button (click)="viewGrafics()" mat-raised-button color="accent">Ver
+                                    Gráficas</button>
                             </div>
                             <div>
-                                <button [disabled]="this.filterSearchForm.invalid" type="submit" mat-raised-button color="primary">Buscar</button>
+                                <button [disabled]="this.filterSearchForm.invalid" type="submit" mat-raised-button
+                                    color="primary">Buscar</button>
                                 <button type=button (click)="resetForm()" mat-button color="accent">Limpiar</button>
                             </div>
-                            
+
                         </div>
                     </mat-action-row>
                 </form>
@@ -60,25 +61,22 @@
 
                             <ng-container matColumnDef="name">
                                 <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Completo </mat-header-cell>
-                                <mat-cell *matCellDef="let element"> {{element.name}}  {{ element.lastname}} </mat-cell>
+                                <mat-cell *matCellDef="let element"> {{element.name}} {{ element.lastname}} </mat-cell>
                             </ng-container>
-    
+
                             <ng-container matColumnDef="email">
                                 <mat-header-cell *matHeaderCellDef mat-sort-header> Correo </mat-header-cell>
                                 <mat-cell *matCellDef="let element"> {{element.mail}} </mat-cell>
                             </ng-container>
-    
+
                             <ng-container matColumnDef="document">
                                 <mat-header-cell *matHeaderCellDef mat-sort-header> Documento </mat-header-cell>
                                 <mat-cell *matCellDef="let element"> {{element.document}} </mat-cell>
                             </ng-container>
-                        </table>    
+                        </table>
                     </div>
                 </div>
             </mat-expansion-panel>
         </mat-accordion>
-
     </div>
-
-
 </div>

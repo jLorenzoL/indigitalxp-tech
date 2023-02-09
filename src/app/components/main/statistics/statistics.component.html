@@ -5,10 +5,19 @@
             <h2>Clientes nacidos por Mes</h2>
             <mat-card>
                 <div class="" fxLayout.lt-md="column" fxLayout="row wrap" fxLayoutGap="0px">
-                    <ngx-charts-bar-vertical [view]="[800, 250]" [results]="dataSource" [xAxisLabel]="'Mes'"
-                        [legendTitle]="''" [yAxisLabel]="'Cantidad'" [legend]="true"
-                        [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
-                        [roundDomains]="true" [gradient]="true">
+                    <ngx-charts-bar-vertical 
+                        [view]="[800, 250]" 
+                        [results]="dataSource" 
+                        [xAxisLabel]="'Mes'"
+                        [legendTitle]="''" 
+                        [yAxisLabel]="'Cantidad'" 
+                        [legend]="true" 
+                        [showXAxisLabel]="true"
+                        [showYAxisLabel]="true" 
+                        [xAxis]="true" 
+                        [yAxis]="true" 
+                        [roundDomains]="true" 
+                        [gradient]="true">
                     </ngx-charts-bar-vertical>
                 </div>
             </mat-card>
@@ -19,10 +28,19 @@
             <h2>Clientes nacidos por Año</h2>
             <mat-card>
                 <div class="" fxLayout.lt-md="column" fxLayout="row wrap" fxLayoutGap="0px">
-                    <ngx-charts-bar-vertical [view]="[800, 250]" [results]="dataSourceyyyy" [xAxisLabel]="'Año'"
-                        [legendTitle]="''" [yAxisLabel]="'Cantidad'" [legend]="true"
-                        [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
-                        [roundDomains]="true" [gradient]="true">
+                    <ngx-charts-bar-vertical 
+                        [view]="[800, 250]" 
+                        [results]="dataSourceyyyy" 
+                        [xAxisLabel]="'Año'"
+                        [legendTitle]="''" 
+                        [yAxisLabel]="'Cantidad'" 
+                        [legend]="true" 
+                        [showXAxisLabel]="true"
+                        [showYAxisLabel]="true" 
+                        [xAxis]="true" 
+                        [yAxis]="true" 
+                        [roundDomains]="true" 
+                        [gradient]="true">
                     </ngx-charts-bar-vertical>
                 </div>
             </mat-card>
@@ -35,5 +53,5 @@
     <div>
         <button type=button (click)="getBack()" mat-raised-button color="primary">Volver</button>
     </div>
-    
+
 </div>

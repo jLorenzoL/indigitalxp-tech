@@ -38,7 +38,7 @@ export class CustomerComponentComponent implements OnInit {
     this.createForm();
   }
 
-  createForm(){
+  createForm() {
     this.filterSearchForm = new FormGroup({
       document: new FormControl("", [Validators.maxLength(9), Validators.minLength(8)]),
       email: new FormControl("", [Validators.email])
@@ -49,75 +49,47 @@ export class CustomerComponentComponent implements OnInit {
     this.step = index;
   }
 
-  searchCustomer(){
+  searchCustomer() {
     const valueFiltro = this.filterSearchForm.controls;
     const doc = valueFiltro["document"].value;
     const email = valueFiltro["email"].value;
     this.searchCustomerData(doc, email);
   }
 
-  searchCustomerData(doc: string, email: string){
+  searchCustomerData(doc: string, email: string) {
     this._customerService.searchCustomer(doc, email).pipe(
-      map((userData : any) => {
+      map((userData: any) => {
         this.setStep(1);
-        this.dataSource = userData.result
+        userData.result.length > 0 ?
+          this.dataSource = userData.result : this._snackBarClassShared.openSnackBar("No existen resultados", 5000, 'OK')
       })
     ).subscribe();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
 
   }
 
-  addCustomer(){
+  addCustomer() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width= '560px'
+    dialogConfig.width = '560px'
 
     const dialogRef = this.dialog.open(AddCustomerComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(
       data => {
-        if(data.document){
-          this.saveCustomer(data)
-        }
-        
-      });    
+        this.dataSource = new MatTableDataSource<any[]>([]);
+        this.searchCustomerData("", "");
+      });
 
   }
 
-  viewGrafics(){
+  viewGrafics() {
     this._router.navigate(['/statistics']);
   }
 
-  saveCustomer(data: any){
-
-    const requestBody = {
-      "name" : data.name,
-      "lastname": data.apellido,
-      "mail": data.email,
-      "document" : data.document,
-      "born": data.born
-    }
-
-    this._customerService.saveNewCustomer(requestBody)
-      .subscribe({
-      next: (res) => {
-        console.log(res);
-        if(res.state == true) {
-          this.dataSource = new MatTableDataSource<any[]>([]);
-          this.searchCustomerData("","");
-        }else {
-          this._snackBarClassShared.openSnackBar(res.message, 5000, 'OK')
-        }
-      },
-      error: (e) => console.error(e)
-    });;
-
-
-  }
-
-  resetForm(){
+  resetForm() {
     this.dataSource = new MatTableDataSource<any[]>([]);
     this.setStep(0)
     const valueFiltro = this.filterSearchForm.controls;

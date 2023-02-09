@@ -1,4 +1,3 @@
-import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CustomerComponentComponent } from './components/main/customer-component/customer.component';
 import { StatisticsComponent } from './components/main/statistics/statistics.component';

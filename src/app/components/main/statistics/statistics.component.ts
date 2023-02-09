@@ -21,44 +21,44 @@ export class StatisticsComponent implements OnInit {
     this.searchInfoByYYYY();
   }
 
-  searchInfoByYYYY(){
+  searchInfoByYYYY() {
     this._customerService.searchCustomerByYYYY().pipe(
-      map((userData : any) => {
+      map((userData: any) => {
         this.dataSourceyyyy = userData.result
       })
     ).subscribe();
   }
 
-  searchInfoByMM(){
+  searchInfoByMM() {
     this._customerService.searchCustomerByMonth().pipe(
-      map((userData : any) => {
+      map((userData: any) => {
         const result = this.transformData(userData.result);
         this.dataSource = result
       })
     ).subscribe();
   }
 
-  transformData(result : any[]) : any[] {
+  transformData(result: any[]): any[] {
 
     const list: { name: string; value: string; }[] = []
     result.forEach(element => {
-      const val = {name:'', value: ''};
+      const val = { name: '', value: '' };
       val.name = this.transformNumberToMonth(element.name)
       val.value = element.value;
       list.push(val);
     });
 
     return list.splice(0);
-    
+
   }
 
-  transformNumberToMonth(val : any) : string{
+  transformNumberToMonth(val: any): string {
     const date = new Date();
     date.setMonth(val - 1);
     return date.toLocaleString('en-PE', { month: 'long' });
   }
 
-  getBack(){
+  getBack() {
     this._router.navigate(['/customers'])
   }
 
