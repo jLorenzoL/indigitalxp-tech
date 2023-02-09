@@ -79,8 +79,11 @@ export class CustomerComponentComponent implements OnInit {
     const dialogRef = this.dialog.open(AddCustomerComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(
       data => {
-        this.dataSource = new MatTableDataSource<any[]>([]);
-        this.searchCustomerData("", "");
+        if(data){
+          this.dataSource = new MatTableDataSource<any[]>([]);
+          this.searchCustomerData("", "");
+        }
+        
       });
 
   }

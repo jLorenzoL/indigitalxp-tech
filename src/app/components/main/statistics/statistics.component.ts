@@ -55,7 +55,7 @@ export class StatisticsComponent implements OnInit {
   transformNumberToMonth(val: any): string {
     const date = new Date();
     date.setMonth(val - 1);
-    return date.toLocaleString('en-PE', { month: 'long' });
+    return date.toLocaleString('es-PE', { month: 'long' });
   }
 
   getBack() {
