@@ -54,28 +54,26 @@
                 </mat-expansion-panel-header>
 
                 <div class="">
-                    <div class="">
-                        <table mat-table [dataSource]="dataSource" matSort #tableCustomer matSortActive="created" matSortDisableClear matSortDirection="asc">
-                            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    <mat-table [dataSource]="dataSource" matSort #tableCustomer matSortActive="created" matSortDisableClear matSortDirection="asc">
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-                            <ng-container matColumnDef="name">
-                                <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Completo </mat-header-cell>
-                                <mat-cell *matCellDef="let element"> {{element.name}} {{ element.lastname}} </mat-cell>
-                            </ng-container>
+                        <ng-container matColumnDef="name">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Completo </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.name}} {{ element.lastname}} </mat-cell>
+                        </ng-container>
 
-                            <ng-container matColumnDef="email">
-                                <mat-header-cell *matHeaderCellDef mat-sort-header> Correo </mat-header-cell>
-                                <mat-cell *matCellDef="let element"> {{element.mail}} </mat-cell>
-                            </ng-container>
+                        <ng-container matColumnDef="email">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Correo </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.mail}} </mat-cell>
+                        </ng-container>
 
-                            <ng-container matColumnDef="document">
-                                <mat-header-cell *matHeaderCellDef mat-sort-header> Documento </mat-header-cell>
-                                <mat-cell *matCellDef="let element"> {{element.document}} </mat-cell>
-                            </ng-container>
-                        </table>
-                        <mat-paginator [length]="resultsLength" [pageSizeOptions]="[10, 25,50]" showFirstLastButtons="true"></mat-paginator>
-                    </div>
+                        <ng-container matColumnDef="document">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Documento </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.document}} </mat-cell>
+                        </ng-container>
+                    </mat-table>
+                    <mat-paginator [length]="resultsLength" [pageSizeOptions]="[10, 25,50]" showFirstLastButtons="true"></mat-paginator>
                 </div>
             </mat-expansion-panel>
         </mat-accordion>
