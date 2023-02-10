@@ -10,8 +10,8 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class StatisticsComponent implements OnInit {
 
-  dataSource: any[];
-  dataSourceyyyy: any[];
+  dataSource?: any[];
+  dataSourceyyyy?: any[];
 
   constructor(private _customerService: CustomerService,
     private readonly _router: Router) { }

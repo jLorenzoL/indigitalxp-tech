@@ -13,12 +13,42 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+const spanishRangeLabel = (page: number, pageSize: number, length: number) => {
+  if (length == 0 || pageSize == 0) { return `0 van ${length}`; }
+
+  length = Math.max(length, 0);
+
+  const startIndex = page * pageSize;
+
+  // If the start index exceeds the list length, do not try and fix the end index to the end.
+  const endIndex = startIndex < length ?
+      Math.min(startIndex + pageSize, length) :
+      startIndex + pageSize;
+
+  return `${startIndex + 1} - ${endIndex} de ${length}`;
+}
+
+
+export function getSpanishPaginatorIntl() {
+  const paginatorIntl = new MatPaginatorIntl();
+
+  paginatorIntl.itemsPerPageLabel = 'Items por página';
+  paginatorIntl.nextPageLabel = 'Siguiente página';
+  paginatorIntl.previousPageLabel = 'Página Anterior';
+  paginatorIntl.getRangeLabel = spanishRangeLabel;
+  paginatorIntl.firstPageLabel = 'Primera página';
+  paginatorIntl.lastPageLabel = 'Última página';
+
+
+  return paginatorIntl;
+}
 
 const moduleMaterial = [
   MatFormFieldModule,
@@ -38,7 +68,8 @@ const moduleMaterial = [
   MatProgressSpinnerModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatPaginatorModule
 ];
 
 @NgModule({
@@ -48,6 +79,7 @@ const moduleMaterial = [
     moduleMaterial
   ],
   providers: [
+    { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() }
   ],
   exports: [
     moduleMaterial
